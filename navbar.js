@@ -34,6 +34,9 @@ Vue.component("navbar", {
   methods: {
     showTradeModal() {
       this.$modal.show("tradeModal")
+    },
+    showSimulatorModal() {
+      this.$modal.show("simulatorModal")
     }
   }
 })

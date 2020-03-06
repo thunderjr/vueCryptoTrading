@@ -3,7 +3,8 @@ new Vue({
   template: `
     <div>
       <navbar></navbar>
-      <div class="container px-0">
+      
+      <div class="container px-0">        
         <div class="row justify-content-center mt-3">
           <CoinCard coin="XRP" class="col-md-3 col-sm"></CoinCard>
           <CoinCard coin="BCH" class="col-md-3 col-sm"></CoinCard>
@@ -12,30 +13,9 @@ new Vue({
         <div class="row mt-4 p-0">
           <TradeCard v-for="(trade, i) in trades" :key="i" :i="i" :coin="trade.coin" :qtdCoin="trade.qtdCoin" :priceBuy="trade.priceBuy"></TradeCard>
         </div>
-
-        <modal name="tradeModal" height="auto">
-          <div class="p-3" style="max-width: 20rem">
-            <input class="form-control m-1" v-model="inputCoinQtd" :placeholder="'Qtd. em '+inputMoeda">
-            
-            <div class="row ml-1 d-flex justify-content-between">
-              <input class="form-control col-4" v-model="inputDollarQtd" placeholder="Qtd. em Dólar" disabled>
-              <input class="form-control col mr-2 ml-2" v-model="inputPriceWhenBuyed" placeholder="Preço de Compra">
-            </div>
-
-            <select class="custom-select m-1 border-top-0 border-left-0 border-right-0 shadow-none" v-model="inputMoeda">
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-              <option value="BCH">BCH</option>
-              <option value="XRP">XRP</option>
-              <option value="DASH">DASH</option>
-              <option value="LTC">LTC</option>
-            </select>
-            <button class="btn btn-primary my-1" v-on:click="addTrade">
-              Adicionar
-            </button>
-          </div>
-        </modal>
       </div>
+      <tradeModal name="tradeModal"></tradeModal>
+      <simulatorModal name="simulatorModal"></simulatorModal>
     </div>
   `,
   data() {
@@ -45,10 +25,6 @@ new Vue({
           qtdTrades: 4,
           lucros: [],
           valoresFinais: [],
-          inputCoinQtd: '',
-          inputDollarQtd: '',
-          inputPriceWhenBuyed: '',
-          inputMoeda: 'XRP',
           trades: [],
       }
   },
@@ -84,17 +60,5 @@ new Vue({
 
         this.valoresFinais = this.lucros.map(i => (Number(i) + this.valorInicial).toFixed(3))
       },  
-      addTrade() {
-        if (!this.newTrade) {
-          return;
-        }    
-        this.trades.push(this.newTrade);
-        this.newTrade = '';
-        this.saveTrades();
-      },
-      saveTrades() {
-        const parsed = JSON.stringify(this.trades);
-        localStorage.setItem('trades', parsed);
-      }
     }
 });

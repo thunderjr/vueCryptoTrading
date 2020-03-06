@@ -33,10 +33,8 @@ Vue.component("CoinCard", {
           <span class="h5 col">{{formatDecimal(coinData.lowPrice)}}</span>
           <span class="h5 col">{{formatDecimal(coinData.highPrice)}}</span>
         </div>
-
       </div>
-
-    </div>   
+    </div>
   `,
   data() {
     return({
