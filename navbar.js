@@ -1,7 +1,7 @@
 Vue.component("navbar", {
   template: `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-0">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand my-auto" href="#">
         <span class="h2">
           <i class="fab fa-bitcoin"></i>
         </span>
@@ -10,19 +10,18 @@ Vue.component("navbar", {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active h5">
-            <a class="badge badge-dark p-1" href="#" @click="showTradeModal">Adicionar Trade</a>
+        <ul class="navbar-nav mr-auto p-0">
+          <li class="nav-item h5 my-auto">
+            <a class="nav-link" href="#" @click="showTradeModal">Adicionar Trade</a>
           </li>
-        <!--  <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+          <li class="nav-item h5 my-auto">
+            <a class="nav-link" href="#" @click="showSimulatorModal">Simulador de Operações</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"></a>
-          </li>-->
         </ul>
         <span class="navbar-text">
-          Flávio Marques Júnior
+          <div class="d-flex flex-column">
+            Flávio Marques Júnior
+          </div>
         </span>
       </div>
     </nav>
